@@ -49,20 +49,21 @@ final class Rover {
 	}
 
 	public function turnRight() {
-		$key = array_search($this->dir, $this->coord) + 1;
-		if (isset($this->coord[$key])) {
-			$this->dir = $this->coord[$key];			
-		} else {
-			$this->dir = $this->coord[0];
-		}
+		$this->turn(true);
 	}
 
 	public function turnLeft() {
-		$key = array_search($this->dir, $this->coord) - 1;
+		$this->turn(false);
+	}
+
+	public function turn($right){
+		$value = ($right)? 1: -1;
+		$indexStart = ($right)? 0: 3;
+		$key = array_search($this->dir, $this->coord) + $value;
 		if (isset($this->coord[$key])) {
 			$this->dir = $this->coord[$key];			
 		} else {
-			$this->dir = $this->coord[3];
+			$this->dir = $this->coord[$indexStart];
 		}
 	}
 
