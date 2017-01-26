@@ -48,17 +48,16 @@ final class Rover {
 	}
 
 	public function turnRight() {
-		if($this->dir === "N") {
-			$this->dir = "E";
+		$coord = ["N", "E", "S", "W"];
+		$key = array_search($this->dir, $coord);
+		$len = count($coord);
+		if ($key < $len) {
+			$newKey = $key+1;
+			$this->dir = $coord[$newKey];
 		}
-		else if($this->dir === "E") {
-			$this->dir = "S";
-		}
-		else if($this->dir === "S") {
-			$this->dir = "W";
-		}
-		else if($this->dir === "W") {
-			$this->dir = "N";
+		else {
+			$newKey = 0;
+			$this->dir = $coord[$newKey];
 		}
 	}
 
