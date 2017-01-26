@@ -19,18 +19,11 @@ final class Rover {
 	}
 
 	public function moveForward(){
-		if($this->dir === "N"){
-			$this->y= $this->y + 1;	
-		} 
-		else if ($this->dir === "E") {
-			$this->x = $this->x + 1;
-		}
-		else if($this->dir === "S"){
-			$this->y = $this->y - 1;
-		}
-		else if ($this->dir === "W"){
-			$this->x = $this->x - 1;
-		}
+		$valuesX = [0, 1, 0, -1];
+		$valuesY = [1, 0, -1, 0];
+		$key = array_search($this->dir, $this->coord);
+		$this->x = $this->x + $valuesX[$key];
+		$this->y = $this->y + $valuesY[$key];
 	}
 
 	public function moveBackward(){
