@@ -130,4 +130,20 @@ final class RoverTest extends TestCase {
     		$rover->getPositionAndDirection()
     	);
     }
+    public function testFeatureOne() {
+    	$rover = new Rover(0,0,"E");
+    	$rover->moveForward();
+    	$rover->turnRight();
+    	$rover->moveForward();
+    	$rover->turnLeft();
+    	$rover->moveForward();
+    	$rover->turnRight();
+    	$rover->moveBackward();
+    	$rover->moveBackward();
+    	$this->assertEquals(
+    		[2,1, "S"],
+    		$rover->getPositionAndDirection()
+    	);
+    }
+
 }
