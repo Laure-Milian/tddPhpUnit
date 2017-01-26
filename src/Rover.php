@@ -56,7 +56,7 @@ final class Rover {
 		$this->turn(false);
 	}
 
-	public function turn($right){
+	private function turn($right){
 		$value = ($right)? 1: -1;
 		$indexStart = ($right)? 0: 3;
 		$key = array_search($this->dir, $this->coord) + $value;
