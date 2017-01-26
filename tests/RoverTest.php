@@ -18,16 +18,16 @@ final class RoverTest extends TestCase {
     public function testPositionShouldBe00() {
     	$rover = new Rover(0,0,"N");
     	$this->assertEquals(
-    		[0, 0],
-    		$rover->getPosition()
+    		[0, 0, "N"],
+    		$rover->getPositionAndDirection()
     	);
     }
 
     public function testDirectionShouldBeNorth() {
     	$rover = new Rover(0,0,"N");
     	$this->assertEquals(
-    		"N",
-    		$rover->getDirection()
+    		[0,0,"N"],
+    		$rover->getPositionAndDirection()
     	);
     }
 
@@ -35,8 +35,8 @@ final class RoverTest extends TestCase {
     	$rover = new Rover(0,0,"N");
     	$rover->moveForward();
     	$this->assertEquals(
-    		[0, 1],
-    		$rover->getPosition()
+    		[0, 1, "N"],
+    		$rover->getPositionAndDirection()
     		);
     }
 
@@ -45,8 +45,8 @@ final class RoverTest extends TestCase {
     	$rover->moveForward();
     	$rover->moveForward();
     	$this->assertEquals(
-    		[0,2],
-    		$rover->getPosition()
+    		[0,2,"N"],
+    		$rover->getPositionAndDirection()
     	);
     }
     
@@ -54,8 +54,8 @@ final class RoverTest extends TestCase {
     	$rover = new Rover(0,0, "E");
     	$rover->moveForward();
     	$this->assertEquals(
-    		[1, 0],
-    		$rover->getPosition()
+    		[1, 0,"E"],
+    		$rover->getPositionAndDirection()
     		);
     }
 
@@ -63,8 +63,8 @@ final class RoverTest extends TestCase {
     	$rover = new Rover(0,0, "S");
     	$rover->moveForward();
     	$this->assertEquals(
-    		[0, -1],
-    		$rover->getPosition()
+    		[0, -1,"S"],
+    		$rover->getPositionAndDirection()
     		);
     }
 
@@ -72,8 +72,8 @@ final class RoverTest extends TestCase {
     	$rover = new Rover(0,0, "W");
     	$rover->moveForward();
     	$this->assertEquals(
-    		[-1, 0],
-    		$rover->getPosition()
+    		[-1, 0, "W"],
+    		$rover->getPositionAndDirection()
     		);
     }
 
@@ -81,18 +81,36 @@ final class RoverTest extends TestCase {
     	$rover = new Rover(0,0,"N");
     	$rover->turnRight();
     	$this->assertEquals(
-    		"E",
-    		$rover->getDirection()
+    		[0,0,"E"],
+    		$rover->getPositionAndDirection()
     	);
     }
+    
     public function testWhenTurnRightFromEastNewDirectionShouldBeSouth() {
     	$rover = new Rover(0,0,"E");
     	$rover->turnRight();
     	$this->assertEquals(
-    		"S",
-    		$rover->getDirection()
+    		[0,0,"S"],
+    		$rover->getPositionAndDirection()
     	);
     }
 
+    public function testWhenTurnLeftFromNorthNewDirectionShouldBeWest() {
+    	$rover = new Rover(0,0,"N");
+    	$rover->turnLeft();
+    	$this->assertEquals(
+    		[0,0,"W"],
+    		$rover->getPositionAndDirection()
+    	);
+    }
+
+    public function testWhenTurnLeftFromEastNewDirectionShouldBeNorth() {
+    	$rover = new Rover(0,0,"E");
+    	$rover->turnLeft();
+    	$this->assertEquals(
+    		[0,0,"N"],
+    		$rover->getPositionAndDirection()
+    	);
+    }
 
 }

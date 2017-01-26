@@ -12,12 +12,11 @@ final class Rover {
 		$this->y = $y;
 		$this->dir = $dir;
 	}
-	public function getPosition() {
-		return [$this->x, $this->y];
+
+	public function getPositionAndDirection() {
+		return [$this->x, $this->y, $this->dir];
 	}
-	public function getDirection() {
-		return $this->dir;
-	}
+
 	public function moveForward(){
 		if($this->dir === "N"){
 			$this->y= $this->y + 1;	
@@ -45,6 +44,21 @@ final class Rover {
 		}
 		else if($this->dir === "W") {
 			$this->dir = "N";
+		}
+	}
+
+	public function turnLeft() {
+		if ($this->dir === "N") {
+			$this->dir = "W";
+		}
+		else if($this->dir === "E") {
+			$this->dir = "N";
+		}
+		else if($this->dir === "S") {
+			$this->dir = "E";
+		}
+		else if($this->dir === "W") {
+			$this->dir = "S";
 		}
 	}
 
