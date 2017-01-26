@@ -5,26 +5,18 @@ final class Rover {
 
 	private $x;
     private $y;
+    private $dir;
 
-	private function __construct($x, $y) {
+	public function __construct($x, $y, $dir) {
 		$this->x = $x;
 		$this->y = $y;
+		$this->dir = $dir;
 	}
-
-	public static function createInstance($x, $y): self {
-		return new self($x, $y);
-	}
-
 	public function getPosition() {
 		return [$this->x, $this->y];
 	}
-}
-/*final class Rover {
-
-	private $x = 0;
-	private $y = 0;
-
-	public function getPosition() {
-		return $this->x;
+	public function getDirection() {
+		return $this->dir;
 	}
-}*/
+
+}
