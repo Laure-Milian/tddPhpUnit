@@ -49,6 +49,24 @@ final class RoverTest extends TestCase {
     		$rover->getPositionAndDirection()
     	);
     }
+
+    public function testWhenMooveBackwardOnceFromNorthPositionShouldBe0moins1() {
+    	$rover = new Rover(0,0,"N");
+    	$rover->moveBackward();
+    	$this->assertEquals(
+    		[0, -1, "N"],
+    		$rover->getPositionAndDirection()
+    		);
+    }
+
+    public function testWhenMooveBackwardOnceFromEastPositionShouldBemoins10() {
+    	$rover = new Rover(0,0,"E");
+    	$rover->moveBackward();
+    	$this->assertEquals(
+    		[-1, 0, "E"],
+    		$rover->getPositionAndDirection()
+    		);
+    }
     
     public function testWhenMooveForwardOnceFromEastPositionShouldBe10() {
     	$rover = new Rover(0,0, "E");
@@ -112,5 +130,4 @@ final class RoverTest extends TestCase {
     		$rover->getPositionAndDirection()
     	);
     }
-
 }
