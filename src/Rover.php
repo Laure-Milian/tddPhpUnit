@@ -6,6 +6,7 @@ final class Rover {
 	private $x;
     private $y;
     private $dir;
+    private $coord = ["N", "E", "S", "W"];
 
 	public function __construct($x, $y, $dir) {
 		$this->x = $x;
@@ -48,31 +49,20 @@ final class Rover {
 	}
 
 	public function turnRight() {
-		$coord = ["N", "E", "S", "W"];
-		$key = array_search($this->dir, $coord);
-		$len = count($coord);
-		if ($key < $len) {
-			$newKey = $key+1;
-			$this->dir = $coord[$newKey];
-		}
-		else {
-			$newKey = 0;
-			$this->dir = $coord[$newKey];
+		$key = array_search($this->dir, $this->coord) + 1;
+		if (isset($this->coord[$key])) {
+			$this->dir = $this->coord[$key];			
+		} else {
+			$this->dir = $this->coord[0];
 		}
 	}
 
 	public function turnLeft() {
-		if ($this->dir === "N") {
-			$this->dir = "W";
-		}
-		else if($this->dir === "E") {
-			$this->dir = "N";
-		}
-		else if($this->dir === "S") {
-			$this->dir = "E";
-		}
-		else if($this->dir === "W") {
-			$this->dir = "S";
+		$key = array_search($this->dir, $this->coord) - 1;
+		if (isset($this->coord[$key])) {
+			$this->dir = $this->coord[$key];			
+		} else {
+			$this->dir = $this->coord[3];
 		}
 	}
 
