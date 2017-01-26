@@ -1,0 +1,12 @@
+{
+    "name": "root/tdd-php-unit",
+    "authors": [
+        {
+            "name": "tsague",
+            "email": "tsagueymele@yahoo.fr"
+        }
+    ],
+    "require-dev": {
+    	"phpunit/phpunit": "5.5.*"
+    }
+}
