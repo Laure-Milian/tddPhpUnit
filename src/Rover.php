@@ -2,7 +2,6 @@
 declare(strict_types=1);
 
 final class Rover {
-
 	private $x;
     private $y;
     private $dir;
@@ -13,27 +12,21 @@ final class Rover {
 		$this->y = $y;
 		$this->dir = $dir;
 	}
-
 	public function getPositionAndDirection() {
 		return [$this->x, $this->y, $this->dir];
 	}
-
 	public function moveForward(){
 		$this->move(true);
 	}
-
 	public function moveBackward(){
 		$this->move(false);
 	}
-
 	public function turnRight() {
 		$this->turn(true);
 	}
-
 	public function turnLeft() {
 		$this->turn(false);
 	}
-
 	private function turn($right){
 		$value = ($right)? 1: -1;
 		$indexStart = ($right)? 0: 3;
@@ -44,7 +37,6 @@ final class Rover {
 			$this->dir = $this->coord[$indexStart];
 		}
 	}
-
 	private function move($forward) {
 		$valuesX = ($forward)? [0, 1, 0, -1] : [0, -1, 0, 1];
 		$valuesY = ($forward) ? [1, 0, -1, 0] : [-1, 0, 1, 0];

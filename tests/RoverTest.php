@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../src/Rover.php';
 
 use PHPUnit\Framework\TestCase;
 
@@ -14,7 +15,6 @@ final class RoverTest extends TestCase {
            $rover = new Rover(0,0,"N")
         );
     }
-
     public function testPositionShouldBe00() {
     	$rover = new Rover(0,0,"N");
     	$this->assertEquals(
@@ -22,7 +22,6 @@ final class RoverTest extends TestCase {
     		$rover->getPositionAndDirection()
     	);
     }
-
     public function testDirectionShouldBeNorth() {
     	$rover = new Rover(0,0,"N");
     	$this->assertEquals(
@@ -30,7 +29,6 @@ final class RoverTest extends TestCase {
     		$rover->getPositionAndDirection()
     	);
     }
-
     public function testWhenMooveForwardOnceFromNorthPositionShouldBe01() {
     	$rover = new Rover(8,13,"N");
     	$rover->moveForward();
