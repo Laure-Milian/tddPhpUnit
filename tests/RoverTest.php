@@ -32,10 +32,10 @@ final class RoverTest extends TestCase {
     }
 
     public function testWhenMooveForwardOnceFromNorthPositionShouldBe01() {
-    	$rover = new Rover(0,0,"N");
+    	$rover = new Rover(8,13,"N");
     	$rover->moveForward();
     	$this->assertEquals(
-    		[0, 1, "N"],
+    		[8, 14, "N"],
     		$rover->getPositionAndDirection()
     		);
     }
@@ -76,7 +76,6 @@ final class RoverTest extends TestCase {
     		$rover->getPositionAndDirection()
     		);
     }
-
     public function testWhenMooveForwardOnceFromSouthPositionShouldBe0moins1() {
     	$rover = new Rover(0,0, "S");
     	$rover->moveForward();
@@ -85,7 +84,6 @@ final class RoverTest extends TestCase {
     		$rover->getPositionAndDirection()
     		);
     }
-
     public function testWhenMooveForwardOnceFromWestPositionShouldBemoins10() {
     	$rover = new Rover(0,0, "W");
     	$rover->moveForward();
@@ -94,7 +92,6 @@ final class RoverTest extends TestCase {
     		$rover->getPositionAndDirection()
     		);
     }
-
     public function testWhenTurnRightFromNorthNewDirectionShouldBeEast() {
     	$rover = new Rover(0,0,"N");
     	$rover->turnRight();
@@ -103,7 +100,6 @@ final class RoverTest extends TestCase {
     		$rover->getPositionAndDirection()
     	);
     }
-    
     public function testWhenTurnRightFromEastNewDirectionShouldBeSouth() {
     	$rover = new Rover(0,0,"E");
     	$rover->turnRight();
@@ -112,7 +108,6 @@ final class RoverTest extends TestCase {
     		$rover->getPositionAndDirection()
     	);
     }
-
     public function testWhenTurnLeftFromNorthNewDirectionShouldBeWest() {
     	$rover = new Rover(0,0,"N");
     	$rover->turnLeft();
@@ -121,7 +116,6 @@ final class RoverTest extends TestCase {
     		$rover->getPositionAndDirection()
     	);
     }
-
     public function testWhenTurnLeftFromEastNewDirectionShouldBeNorth() {
     	$rover = new Rover(0,0,"E");
     	$rover->turnLeft();
@@ -145,5 +139,19 @@ final class RoverTest extends TestCase {
     		$rover->getPositionAndDirection()
     	);
     }
-
+    public function testfeatureTwo() {
+    	$rover = new Rover(0,0, "S");
+    	$rover->moveForward();
+    	$rover->turnRight();
+    	$rover->moveForward();
+    	$rover->turnLeft();
+    	$rover->moveForward();
+    	$rover->moveForward();
+    	$rover->turnLeft();
+    	$rover->moveBackward();
+    	$this->assertEquals(
+    		[-2, -3, "E"],
+    		$rover->getPositionAndDirection()
+    		);
+	   }
 }
